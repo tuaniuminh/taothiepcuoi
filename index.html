@@ -91,6 +91,8 @@
                     <button class="tab-btn active" data-tab="themes-tab" title="Chủ đề"><i class="fas fa-palette"></i> Chủ đề</button>
                     <button class="tab-btn" data-tab="info-tab" title="Thông tin"><i class="fas fa-edit"></i> Nội dung</button>
                     <button class="tab-btn" data-tab="style-tab" title="Tùy chỉnh"><i class="fas fa-font"></i> Kiểu chữ</button>
+                    <button class="tab-btn" data-tab="story-tab" title="Câu chuyện"><i class="fas fa-heart"></i> Kỷ niệm</button>
+                    <button class="tab-btn" data-tab="gifting-tab" title="Mừng cưới"><i class="fas fa-gift"></i> Mừng cưới</button>
                     <button class="tab-btn" data-tab="music-tab" title="Âm nhạc"><i class="fas fa-music"></i> Âm nhạc</button>
                     <button class="tab-btn" data-tab="export-tab" title="Xuất thiệp"><i class="fas fa-download"></i> Xuất bản</button>
                 </div>
@@ -240,6 +242,71 @@
                                 <button class="decor-toggle-btn active" data-decor="decor-rings"><i class="fas fa-ring"></i> Nhẫn cưới</button>
                                 <button class="decor-toggle-btn active" data-decor="decor-hearts"><i class="fas fa-heart"></i> Trái tim</button>
                                 <button class="decor-toggle-btn" data-decor="decor-sparkles"><i class="fas fa-sparkles"></i> Lấp lánh</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3.5: LOVE STORY TIMELINE CUSTOMIZATION -->
+                    <div id="story-tab" class="tab-pane">
+                        <h3>Kỷ Niệm Tình Yêu</h3>
+                        <p class="tab-desc">Kể lại câu chuyện tình yêu lãng mạn qua 3 cột mốc đáng nhớ nhất.</p>
+
+                        <div class="story-milestone-group">
+                            <label>Cột mốc 1: Ngày gặp gỡ</label>
+                            <input type="text" id="input-story-t1" value="Lần đầu gặp gỡ" placeholder="Tiêu đề mốc 1">
+                            <input type="text" id="input-story-d1" value="14/02/2021" placeholder="Ngày tháng mốc 1" style="margin-top: 8px;">
+                            <textarea id="input-story-c1" rows="2" placeholder="Mô tả ngắn..." style="margin-top: 8px;">Định mệnh đã cho chúng ta gặp nhau tại một quán cà phê nhỏ vào buổi chiều mưa...</textarea>
+                        </div>
+
+                        <div class="story-milestone-group" style="margin-top: 20px;">
+                            <label>Cột mốc 2: Lời tỏ tình</label>
+                            <input type="text" id="input-story-t2" value="Lời tỏ tình ngọt ngào" placeholder="Tiêu đề mốc 2">
+                            <input type="text" id="input-story-d2" value="24/12/2021" placeholder="Ngày tháng mốc 2" style="margin-top: 8px;">
+                            <textarea id="input-story-c2" rows="2" placeholder="Mô tả ngắn..." style="margin-top: 8px;">Sau nhiều tháng bên nhau, anh đã lấy hết can đảm tỏ tình với em dưới ánh đèn Giáng Sinh rực rỡ...</textarea>
+                        </div>
+
+                        <div class="story-milestone-group" style="margin-top: 20px;">
+                            <label>Cột mốc 3: Quyết định chung đôi</label>
+                            <input type="text" id="input-story-t3" value="Ngày chung đôi" placeholder="Tiêu đề mốc 3">
+                            <input type="text" id="input-story-d3" value="18/10/2026" placeholder="Ngày tháng mốc 3" style="margin-top: 8px;">
+                            <textarea id="input-story-c3" rows="2" placeholder="Mô tả ngắn..." style="margin-top: 8px;">Và giờ đây, một trang mới trong cuộc đời của chúng ta chính thức được viết tiếp...</textarea>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3.6: WEDDING GIFTING REGISTRY -->
+                    <div id="gifting-tab" class="tab-pane">
+                        <h3>Thông Tin Mừng Cưới</h3>
+                        <p class="tab-desc">Nhập thông tin tài khoản ngân hàng mừng cưới. Hệ thống sẽ tự tạo mã chuyển khoản QR.</p>
+                        
+                        <div class="gifting-groom-group">
+                            <h4 style="font-size: 0.95rem; color: var(--primary-color); margin-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 4px;">Tài khoản Chú Rể</h4>
+                            <div class="form-group">
+                                <label for="input-groom-bank">Ngân hàng</label>
+                                <input type="text" id="input-groom-bank" value="Vietcombank">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-groom-acc">Số tài khoản</label>
+                                <input type="text" id="input-groom-acc" value="1023456789">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-groom-holder">Chủ tài khoản (Không dấu)</label>
+                                <input type="text" id="input-groom-holder" value="NGUYEN ANH QUAN">
+                            </div>
+                        </div>
+
+                        <div class="gifting-bride-group" style="margin-top: 24px;">
+                            <h4 style="font-size: 0.95rem; color: var(--accent-red); margin-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 4px;">Tài khoản Cô Dâu</h4>
+                            <div class="form-group">
+                                <label for="input-bride-bank">Ngân hàng</label>
+                                <input type="text" id="input-bride-bank" value="Techcombank">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-bride-acc">Số tài khoản</label>
+                                <input type="text" id="input-bride-acc" value="1903456789123">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-bride-holder">Chủ tài khoản (Không dấu)</label>
+                                <input type="text" id="input-bride-holder" value="PHAN MINH THU">
                             </div>
                         </div>
                     </div>
@@ -408,6 +475,18 @@
                                         "Tình yêu không chỉ là một danh từ - đó là một động từ, là sự sẻ chia, quan tâm và gắn kết suốt cuộc đời."
                                     </blockquote>
 
+                                    <!-- COUNTDOWN TIMER -->
+                                    <div class="card-countdown-container">
+                                        <h4 class="section-divider-title">ĐẾM NGƯỢC NGÀY CHUNG ĐÔI</h4>
+                                        <div class="countdown-timer" id="countdown-timer-widget">
+                                            <div class="countdown-item"><span id="days">00</span><small>Ngày</small></div>
+                                            <div class="countdown-item"><span id="hours">00</span><small>Giờ</small></div>
+                                            <div class="countdown-item"><span id="minutes">00</span><small>Phút</small></div>
+                                            <div class="countdown-item"><span id="seconds">00</span><small>Giây</small></div>
+                                        </div>
+                                        <div id="countdown-completed-msg" class="countdown-completed-msg hidden">Tiệc cưới đã được diễn ra!</div>
+                                    </div>
+
                                     <!-- Wedding Schedule Details -->
                                     <div class="card-schedule-panel">
                                         <div class="schedule-decor">
@@ -425,6 +504,80 @@
                                         <div class="schedule-item">
                                             <h4>ĐỊA ĐIỂM TIỆC CƯỚI</h4>
                                             <p class="location" id="card-back-location">Khách Sạn Palace, 120 Nguyễn Huệ, Quận 1, TP. HCM</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- LOVE STORY TIMELINE -->
+                                    <div class="card-love-story-wrap">
+                                        <h4 class="section-divider-title">HÀNH TRÌNH TÌNH YÊU</h4>
+                                        <div class="love-timeline">
+                                            <div class="timeline-item">
+                                                <div class="timeline-dot"><i class="fas fa-heart"></i></div>
+                                                <div class="timeline-content">
+                                                    <h5 id="card-story-t1">Lần đầu gặp gỡ</h5>
+                                                    <span class="date" id="card-story-d1">14/02/2021</span>
+                                                    <p id="card-story-c1">Định mệnh đã cho chúng ta gặp nhau tại một quán cà phê nhỏ vào buổi chiều mưa...</p>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-dot"><i class="fas fa-comment-dots"></i></div>
+                                                <div class="timeline-content">
+                                                    <h5 id="card-story-t2">Lời tỏ tình ngọt ngào</h5>
+                                                    <span class="date" id="card-story-d2">24/12/2021</span>
+                                                    <p id="card-story-c2">Sau nhiều tháng bên nhau, anh đã lấy hết can đảm tỏ tình với em dưới ánh đèn Giáng Sinh...</p>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-dot"><i class="fas fa-ring"></i></div>
+                                                <div class="timeline-content">
+                                                    <h5 id="card-story-t3">Ngày chung đôi</h5>
+                                                    <span class="date" id="card-story-d3">18/10/2026</span>
+                                                    <p id="card-story-c3">Và giờ đây, một trang mới trong cuộc đời của chúng ta chính thức được viết tiếp...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- WEDDING GIFTING REGISTRY -->
+                                    <div class="card-gifting-wrap">
+                                        <h4 class="section-divider-title">HỘP MỪNG CƯỚI (GIFTING)</h4>
+                                        <p class="gifting-desc">Mọi sự hiện diện và chúc phúc của quý khách là niềm vinh hạnh của gia đình. Nếu quý khách muốn mừng cưới từ xa:</p>
+                                        <div class="gifting-cards">
+                                            <div class="bank-card" id="bank-card-groom">
+                                                <div class="bank-card-header">
+                                                    <i class="fas fa-university"></i>
+                                                    <span>Mừng Cưới Chú Rể</span>
+                                                </div>
+                                                <div class="bank-details">
+                                                    <p class="bank-name" id="card-groom-bank-name">Vietcombank</p>
+                                                    <p class="acc-num" id="card-groom-acc-num">1023456789</p>
+                                                    <p class="acc-holder" id="card-groom-acc-holder">NGUYEN ANH QUAN</p>
+                                                </div>
+                                                <button class="btn-show-qr" data-side="groom"><i class="fas fa-qrcode"></i> Xem mã QR</button>
+                                            </div>
+                                            
+                                            <div class="bank-card" id="bank-card-bride">
+                                                <div class="bank-card-header">
+                                                    <i class="fas fa-university"></i>
+                                                    <span>Mừng Cưới Cô Dâu</span>
+                                                </div>
+                                                <div class="bank-details">
+                                                    <p class="bank-name" id="card-bride-bank-name">Techcombank</p>
+                                                    <p class="acc-num" id="card-bride-acc-num">1903456789123</p>
+                                                    <p class="acc-holder" id="card-bride-acc-holder">PHAN MINH THU</p>
+                                                </div>
+                                                <button class="btn-show-qr" data-side="bride"><i class="fas fa-qrcode"></i> Xem mã QR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- LIVE GUESTBOOK WISHES -->
+                                    <div class="card-guestbook-wrap">
+                                        <h4 class="section-divider-title">SỔ LƯU CHÚC MỪNG</h4>
+                                        <div class="guestbook-list-container">
+                                            <div class="guestbook-scroller" id="guestbook-scroller">
+                                                <!-- Wishes will be dynamically loaded here by JS -->
+                                            </div>
                                         </div>
                                     </div>
 
@@ -607,6 +760,28 @@
                 <button id="clear-rsvp-data-btn" class="btn btn-outline"><i class="fas fa-trash-alt"></i> Xóa tất cả dữ liệu mẫu</button>
                 <button id="close-dashboard-modal-action-btn" class="btn btn-secondary">Đóng Dashboard</button>
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: QR CODE DISPLAY MODAL -->
+    <div id="qr-modal" class="modal-backdrop">
+        <div class="modal-content glass-panel animated zoomIn" style="max-width: 400px; text-align: center; overflow: hidden;">
+            <button class="modal-close-btn" id="close-qr-modal-btn">&times;</button>
+            <div class="modal-header">
+                <i class="fas fa-qrcode modal-header-icon" style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 12px;"></i>
+                <h2 id="qr-modal-title" style="font-size: 1.4rem; font-family: 'Playfair Display', serif; margin-bottom: 4px;">Mã QR Mừng Cưới</h2>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Quét mã dưới đây bằng ứng dụng ngân hàng để chuyển khoản mừng cưới.</p>
+            </div>
+            <div class="qr-code-display-wrap" style="background: white; padding: 15px; border-radius: var(--border-radius-md); display: inline-block; margin: 10px 0 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
+                <!-- Mock QR Image using dynamic API -->
+                <img id="qr-code-img" src="" alt="VietQR Code" style="width: 200px; height: 200px; object-fit: contain; display: block;">
+            </div>
+            <div class="qr-bank-details" style="font-size: 0.85rem; text-align: left; background: rgba(0,0,0,0.02); padding: 12px 16px; border-radius: var(--border-radius-sm); border: 1px solid rgba(0,0,0,0.04); margin-bottom: 20px; color: #444;">
+                <p style="margin-bottom: 4px;"><strong>Ngân hàng:</strong> <span id="qr-modal-bank">Vietcombank</span></p>
+                <p style="margin-bottom: 4px;"><strong>Số tài khoản:</strong> <span id="qr-modal-acc">1023456789</span></p>
+                <p style="margin-bottom: 0;"><strong>Chủ tài khoản:</strong> <span id="qr-modal-holder">NGUYEN ANH QUAN</span></p>
+            </div>
+            <button id="close-qr-modal-action-btn" class="btn btn-secondary btn-block" style="margin-bottom: 0;">Đóng</button>
         </div>
     </div>
 

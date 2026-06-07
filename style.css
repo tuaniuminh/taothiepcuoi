@@ -1841,3 +1841,439 @@ input:focus, textarea:focus, .custom-select:focus {
         height: 580px;
     }
 }
+
+/* ==========================================================================
+   20. NEW EXPANDED SECTIONS: COUNTDOWN, STORY, GIFTING, GUESTBOOK
+   ========================================================================== */
+
+.section-divider-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 35px 0 20px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.theme-floral .section-divider-title { color: #b05c6d; }
+.theme-classic .section-divider-title { color: #d4af37; }
+.theme-modern .section-divider-title { color: #111; }
+.theme-traditional .section-divider-title { color: #ffd700; }
+
+/* A) Countdown Timer Styling */
+.card-countdown-container {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    width: 100%;
+}
+
+.countdown-item {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius-sm);
+    padding: 10px 4px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.theme-classic .countdown-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.theme-traditional .countdown-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.countdown-item span {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.theme-classic .countdown-item span { color: #ffd700; }
+.theme-traditional .countdown-item span { color: #ffd700; }
+.theme-floral .countdown-item span { color: #b05c6d; }
+.theme-modern .countdown-item span { color: #111; }
+
+.countdown-item small {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+}
+
+.theme-classic .countdown-item small, 
+.theme-traditional .countdown-item small {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.countdown-completed-msg {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px;
+    background: rgba(204, 213, 174, 0.2);
+    border-radius: var(--border-radius-sm);
+    margin-top: 10px;
+    color: #4a542b;
+}
+
+/* B) Love Story Timeline */
+.card-love-story-wrap {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.love-timeline {
+    position: relative;
+    padding-left: 24px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.love-timeline::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 2px;
+    height: calc(100% - 15px);
+    background: rgba(0,0,0,0.06);
+}
+
+.theme-classic .love-timeline::before { background: rgba(212, 175, 55, 0.25); }
+.theme-traditional .love-timeline::before { background: rgba(255, 215, 0, 0.25); }
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -24px;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.15);
+}
+
+.theme-floral .timeline-dot { background: #b05c6d; box-shadow: 0 0 0 4px rgba(251, 199, 212, 0.3); }
+.theme-classic .timeline-dot { background: #d4af37; box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2); }
+.theme-modern .timeline-dot { background: #111; box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08); }
+.theme-traditional .timeline-dot { background: #ffd700; box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2); color: #800a0a; }
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 12px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.theme-classic .timeline-content { background: rgba(255, 255, 255, 0.03); border-color: rgba(212, 175, 55, 0.15); }
+.theme-traditional .timeline-content { background: rgba(0, 0, 0, 0.15); border-color: rgba(255, 215, 0, 0.15); }
+
+.timeline-content h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.theme-floral .timeline-content h5 { color: #b05c6d; }
+.theme-classic .timeline-content h5 { color: #ffd700; }
+.theme-traditional .timeline-content h5 { color: #ffd700; }
+.theme-modern .timeline-content h5 { color: #111; }
+
+.timeline-content .date {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.theme-classic .timeline-content .date, 
+.theme-traditional .timeline-content .date {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.timeline-content p {
+    font-size: 0.75rem;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+.theme-classic .timeline-content p { color: #e5cc7f; }
+.theme-traditional .timeline-content p { color: #ffe680; }
+
+/* C) Wedding Gifting Registry ATM Cards */
+.card-gifting-wrap {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.gifting-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.theme-classic .gifting-desc, 
+.theme-traditional .gifting-desc {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.gifting-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.bank-card {
+    border-radius: var(--border-radius-md);
+    padding: 18px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: var(--transition-smooth);
+}
+
+.bank-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+
+#bank-card-groom {
+    background: linear-gradient(135deg, #a27b32 0%, #d4af37 50%, #cca025 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+#bank-card-bride {
+    background: linear-gradient(135deg, #b32644 0%, #800a20 50%, #660516 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Card Chip Effect */
+.bank-card::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    right: 25px;
+    width: 40px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.bank-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    opacity: 0.9;
+}
+
+.bank-card-header i {
+    font-size: 1.1rem;
+}
+
+.bank-details {
+    margin-bottom: 16px;
+}
+
+.bank-details .bank-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    opacity: 0.95;
+}
+
+.bank-details .acc-num {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.5px;
+    margin: 4px 0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.bank-details .acc-holder {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+
+.btn-show-qr {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition-smooth);
+    width: max-content;
+}
+
+.btn-show-qr:hover {
+    background: white;
+    color: #333;
+}
+
+/* D) Live Guestbook Comments Feed */
+.card-guestbook-wrap {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.guestbook-list-container {
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(4px);
+    border-radius: var(--border-radius-md);
+    padding: 12px;
+}
+
+.theme-classic .guestbook-list-container {
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(212, 175, 55, 0.15);
+}
+
+.theme-traditional .guestbook-list-container {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 215, 0, 0.15);
+}
+
+.guestbook-scroller {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.guestbook-card {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    border-radius: var(--border-radius-sm);
+    padding: 12px;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    display: flex;
+    gap: 10px;
+}
+
+.theme-classic .guestbook-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.theme-traditional .guestbook-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.guestbook-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(212, 163, 115, 0.15);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.theme-floral .guestbook-avatar { background: rgba(251, 199, 212, 0.2); color: #b05c6d; }
+.theme-classic .guestbook-avatar { background: rgba(212, 175, 55, 0.15); color: #ffd700; }
+.theme-traditional .guestbook-avatar { background: rgba(255, 215, 0, 0.15); color: #ffd700; }
+.theme-modern .guestbook-avatar { background: rgba(0, 0, 0, 0.05); color: #111; }
+
+.guestbook-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.guestbook-card-content .guest-name {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.theme-classic .guestbook-card-content .guest-name,
+.theme-traditional .guestbook-card-content .guest-name {
+    color: #ffd700;
+}
+
+.guestbook-card-content .guest-wishes {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: var(--text-main);
+    margin: 3px 0 6px;
+    line-height: 1.4;
+}
+
+.theme-classic .guestbook-card-content .guest-wishes { color: #e5cc7f; }
+.theme-traditional .guestbook-card-content .guest-wishes { color: #ffe680; }
+
+.guestbook-card-content .guest-time {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.theme-classic .guestbook-card-content .guest-time,
+.theme-traditional .guestbook-card-content .guest-time {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.story-milestone-group input, .story-milestone-group textarea {
+    background: rgba(255,255,255,0.7);
+}
+

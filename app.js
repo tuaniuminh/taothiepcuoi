@@ -67,6 +67,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileNameIndicator = document.getElementById('file-name-indicator');
     const decorToggleBtns = document.querySelectorAll('.decor-toggle-btn');
 
+    // Expanded Content: Story inputs
+    const inputStoryT1 = document.getElementById('input-story-t1');
+    const inputStoryD1 = document.getElementById('input-story-d1');
+    const inputStoryC1 = document.getElementById('input-story-c1');
+    const inputStoryT2 = document.getElementById('input-story-t2');
+    const inputStoryD2 = document.getElementById('input-story-d2');
+    const inputStoryC2 = document.getElementById('input-story-c2');
+    const inputStoryT3 = document.getElementById('input-story-t3');
+    const inputStoryD3 = document.getElementById('input-story-d3');
+    const inputStoryC3 = document.getElementById('input-story-c3');
+
+    // Expanded Content: Gifting inputs
+    const inputGroomBank = document.getElementById('input-groom-bank');
+    const inputGroomAcc = document.getElementById('input-groom-acc');
+    const inputGroomHolder = document.getElementById('input-groom-holder');
+    const inputBrideBank = document.getElementById('input-bride-bank');
+    const inputBrideAcc = document.getElementById('input-bride-acc');
+    const inputBrideHolder = document.getElementById('input-bride-holder');
+
+    // Expanded Content: Card story elements to sync
+    const cardStoryT1 = document.getElementById('card-story-t1');
+    const cardStoryD1 = document.getElementById('card-story-d1');
+    const cardStoryC1 = document.getElementById('card-story-c1');
+    const cardStoryT2 = document.getElementById('card-story-t2');
+    const cardStoryD2 = document.getElementById('card-story-d2');
+    const cardStoryC2 = document.getElementById('card-story-c2');
+    const cardStoryT3 = document.getElementById('card-story-t3');
+    const cardStoryD3 = document.getElementById('card-story-d3');
+    const cardStoryC3 = document.getElementById('card-story-c3');
+
+    // Expanded Content: Card bank elements to sync
+    const cardGroomBankName = document.getElementById('card-groom-bank-name');
+    const cardGroomAccNum = document.getElementById('card-groom-acc-num');
+    const cardGroomAccHolder = document.getElementById('card-groom-acc-holder');
+    const cardBrideBankName = document.getElementById('card-bride-bank-name');
+    const cardBrideAccNum = document.getElementById('card-bride-acc-num');
+    const cardBrideAccHolder = document.getElementById('card-bride-acc-holder');
+
+    // QR Modal Selectors
+    const qrModal = document.getElementById('qr-modal');
+    const closeQrModalBtn = document.getElementById('close-qr-modal-btn');
+    const closeQrModalActionBtn = document.getElementById('close-qr-modal-action-btn');
+    const qrModalTitle = document.getElementById('qr-modal-title');
+    const qrModalBank = document.getElementById('qr-modal-bank');
+    const qrModalAcc = document.getElementById('qr-modal-acc');
+    const qrModalHolder = document.getElementById('qr-modal-holder');
+    const qrCodeImg = document.getElementById('qr-code-img');
+
     // Card text elements to sync
     const cardFrontGroom = document.getElementById('card-front-groom');
     const cardFrontBride = document.getElementById('card-front-bride');
@@ -256,16 +304,47 @@ document.addEventListener('DOMContentLoaded', () => {
         // Location & Quote
         cardBackLocation.textContent = inputLocation.value || 'Khách Sạn Palace, 120 Nguyễn Huệ, Quận 1, TP. HCM';
         cardBackQuote.textContent = inputQuote.value ? `"${inputQuote.value.replace(/"/g, '')}"` : '';
+
+        // Sync story items
+        if (cardStoryT1) {
+            cardStoryT1.textContent = inputStoryT1.value || 'Lần đầu gặp gỡ';
+            cardStoryD1.textContent = inputStoryD1.value || '14/02/2021';
+            cardStoryC1.textContent = inputStoryC1.value || '';
+            
+            cardStoryT2.textContent = inputStoryT2.value || 'Lời tỏ tình ngọt ngào';
+            cardStoryD2.textContent = inputStoryD2.value || '24/12/2021';
+            cardStoryC2.textContent = inputStoryC2.value || '';
+            
+            cardStoryT3.textContent = inputStoryT3.value || 'Ngày chung đôi';
+            cardStoryD3.textContent = inputStoryD3.value || '18/10/2026';
+            cardStoryC3.textContent = inputStoryC3.value || '';
+        }
+
+        // Sync gifting items
+        if (cardGroomBankName) {
+            cardGroomBankName.textContent = inputGroomBank.value || 'Vietcombank';
+            cardGroomAccNum.textContent = inputGroomAcc.value || '1023456789';
+            cardGroomAccHolder.textContent = inputGroomHolder.value || 'NGUYEN ANH QUAN';
+            
+            cardBrideBankName.textContent = inputBrideBank.value || 'Techcombank';
+            cardBrideAccNum.textContent = inputBrideAcc.value || '1903456789123';
+            cardBrideAccHolder.textContent = inputBrideHolder.value || 'PHAN MINH THU';
+        }
     }
 
     // Input event listeners
     const inputFields = [
         inputGroomName, inputBrideName, inputGroomFather, inputGroomMother,
-        inputBrideFather, inputBrideMother, inputDate, inputTime, inputLocation, inputQuote
+        inputBrideFather, inputBrideMother, inputDate, inputTime, inputLocation, inputQuote,
+        inputStoryT1, inputStoryD1, inputStoryC1,
+        inputStoryT2, inputStoryD2, inputStoryC2,
+        inputStoryT3, inputStoryD3, inputStoryC3,
+        inputGroomBank, inputGroomAcc, inputGroomHolder,
+        inputBrideBank, inputBrideAcc, inputBrideHolder
     ];
 
     inputFields.forEach(input => {
-        input.addEventListener('input', syncInputsToCard);
+        if (input) input.addEventListener('input', syncInputsToCard);
     });
 
     // Run initial sync
@@ -494,6 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Refresh Dashboard if open
         renderRsvpDashboard();
+        renderGuestbook(); // Refresh Guestbook feed on card back!
     });
 
     // 14. ADMIN DASHBOARD OPERATIONS
@@ -596,6 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('wedding_rsvps', JSON.stringify(rsvpData));
             showToast('Đã xóa phản hồi khỏi danh sách.', 'info');
             renderRsvpDashboard();
+            renderGuestbook();
         }
     }
 
@@ -606,6 +687,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('wedding_rsvps', JSON.stringify(rsvpData));
             showToast('Đã dọn dẹp sạch toàn bộ dữ liệu RSVP.', 'info');
             renderRsvpDashboard();
+            renderGuestbook();
         }
     });
 
@@ -821,4 +903,161 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.style.borderBottom = '1px solid #ddd';
         });
     }
+
+    // ==========================================================================
+    // 18. NEW MODULES LOGIC: COUNTDOWN, GUESTBOOK, QR MODAL
+    // ==========================================================================
+
+    // A) Dynamic Countdown Timer
+    let countdownInterval;
+
+    function startCountdown() {
+        if (countdownInterval) clearInterval(countdownInterval);
+
+        const daysSpan = document.getElementById('days');
+        const hoursSpan = document.getElementById('hours');
+        const minutesSpan = document.getElementById('minutes');
+        const secondsSpan = document.getElementById('seconds');
+        const timerWidget = document.getElementById('countdown-timer-widget');
+        const completedMsg = document.getElementById('countdown-completed-msg');
+
+        function updateTimer() {
+            const targetDateStr = inputDate.value;
+            const targetTimeStr = inputTime.value || '00:00';
+            
+            if (!targetDateStr) return;
+            
+            const targetDateTime = new Date(`${targetDateStr}T${targetTimeStr}`);
+            const now = new Date();
+            const difference = targetDateTime - now;
+
+            if (difference <= 0) {
+                // Event has passed
+                if (timerWidget) timerWidget.classList.add('hidden');
+                if (completedMsg) completedMsg.classList.remove('hidden');
+                clearInterval(countdownInterval);
+                return;
+            }
+
+            if (timerWidget) timerWidget.classList.remove('hidden');
+            if (completedMsg) completedMsg.classList.add('hidden');
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((difference / 1000 / 60) % 60);
+            const seconds = Math.floor((difference / 1000) % 60);
+
+            if (daysSpan) daysSpan.textContent = String(days).padStart(2, '0');
+            if (hoursSpan) hoursSpan.textContent = String(hours).padStart(2, '0');
+            if (minutesSpan) minutesSpan.textContent = String(minutes).padStart(2, '0');
+            if (secondsSpan) secondsSpan.textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Run immediately and start loop
+        updateTimer();
+        countdownInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Monitor date & time changes to restart countdown
+    inputDate.addEventListener('change', startCountdown);
+    inputTime.addEventListener('change', startCountdown);
+    
+    // Start countdown initially
+    startCountdown();
+
+    // B) Render Guestbook Wishes
+    const guestbookScroller = document.getElementById('guestbook-scroller');
+
+    function renderGuestbook() {
+        if (!guestbookScroller) return;
+        guestbookScroller.innerHTML = '';
+
+        // Filter and get entries with wishes
+        const entriesWithWishes = rsvpData.filter(item => item.wishes && item.wishes.trim() !== '');
+
+        if (entriesWithWishes.length === 0) {
+            guestbookScroller.innerHTML = `
+                <div style="text-align: center; color: var(--text-muted); font-size: 0.75rem; padding: 20px;">
+                    Chưa có lời chúc nào. Hãy gửi lời chúc qua form RSVP!
+                </div>
+            `;
+            return;
+        }
+
+        entriesWithWishes.forEach(item => {
+            const initial = item.name ? item.name.trim().charAt(0).toUpperCase() : 'G';
+            
+            const card = document.createElement('div');
+            card.className = 'guestbook-card';
+            
+            card.innerHTML = `
+                <div class="guestbook-avatar">${initial}</div>
+                <div class="guestbook-card-content">
+                    <span class="guest-name">${item.name}</span>
+                    <p class="guest-wishes">"${item.wishes}"</p>
+                    <span class="guest-time">${item.time}</span>
+                </div>
+            `;
+            
+            guestbookScroller.appendChild(card);
+        });
+    }
+
+    // Run initial guestbook render
+    renderGuestbook();
+
+    // C) QR Code Modals Trigger
+    const showQrButtons = document.querySelectorAll('.btn-show-qr');
+
+    showQrButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent card from flipping
+            const side = btn.getAttribute('data-side');
+            
+            let bank, acc, holder, title;
+            if (side === 'groom') {
+                title = 'Mừng Cưới Chú Rể';
+                bank = inputGroomBank.value || 'Vietcombank';
+                acc = inputGroomAcc.value || '1023456789';
+                holder = inputGroomHolder.value || 'NGUYEN ANH QUAN';
+            } else {
+                title = 'Mừng Cưới Cô Dâu';
+                bank = inputBrideBank.value || 'Techcombank';
+                acc = inputBrideAcc.value || '1903456789123';
+                holder = inputBrideHolder.value || 'PHAN MINH THU';
+            }
+
+            // Set modal texts
+            qrModalTitle.textContent = title;
+            qrModalBank.textContent = bank;
+            qrModalAcc.textContent = acc;
+            qrModalHolder.textContent = holder;
+
+            // Generate clean dynamic QR image using QRServer API (URL-encoded transfer message)
+            const qrData = `Ngan hang: ${bank}\nSTK: ${acc}\nTen: ${holder}\nMung cuoi happy wedding!`;
+            qrCodeImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(qrData)}`;
+
+            // Show Modal
+            qrModal.style.display = 'flex';
+        });
+    });
+
+    // Close QR Modal triggers
+    if (closeQrModalBtn) {
+        closeQrModalBtn.addEventListener('click', () => {
+            qrModal.style.display = 'none';
+        });
+    }
+    if (closeQrModalActionBtn) {
+        closeQrModalActionBtn.addEventListener('click', () => {
+            qrModal.style.display = 'none';
+        });
+    }
+    
+    // Add QR Modal to global click-outside-to-close listener
+    window.addEventListener('click', (e) => {
+        if (e.target === qrModal) {
+            qrModal.style.display = 'none';
+        }
+    });
 });
