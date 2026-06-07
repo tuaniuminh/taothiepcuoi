@@ -1,0 +1,17 @@
+{
+  "name": "tao-thiep-cuoi",
+  "version": "1.0.0",
+  "description": "Online Wedding Invitation Designer",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y lite-server"
+  },
+  "keywords": [
+    "wedding",
+    "invitation",
+    "designer",
+    "online"
+  ],
+  "author": "Antigravity",
+  "license": "ISC"
+}

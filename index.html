@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Wedding | Thiết Kế Thiệp Cưới Online Nghệ Thuật</title>
+    <meta name="description" content="Tự tay thiết kế thiệp cưới online cao cấp, lãng mạn và hiện đại cho ngày chung đôi hoàn hảo. Hỗ trợ RSVP trực tuyến và nhạc nền tự động.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Charm:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Rose Petals Container (Falling Animation) -->
+    <div id="petals-container" class="petals-container"></div>
+
+    <!-- Music Player Indicator (Global float) -->
+    <div class="music-indicator" id="music-indicator-btn" title="Bật/Tắt nhạc nền">
+        <div class="music-bar bar-1"></div>
+        <div class="music-bar bar-2"></div>
+        <div class="music-bar bar-3"></div>
+        <div class="music-bar bar-4"></div>
+        <i class="fas fa-music-alt"></i>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <i class="fas fa-heart-pulse logo-icon"></i>
+                <span class="logo-text">E-Wedding</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#hero-section" class="active"><i class="fas fa-home"></i> Trang Chủ</a>
+                <a href="#designer-section" id="nav-design-link"><i class="fas fa-magic"></i> Thiết Kế</a>
+                <a href="#features-section"><i class="fas fa-star"></i> Tính Năng</a>
+                <a href="#" id="open-dashboard-btn"><i class="fas fa-clipboard-list"></i> RSVP Admin</a>
+            </nav>
+            <div class="header-cta">
+                <a href="#designer-section" class="btn btn-outline">Bắt đầu ngay</a>
+            </div>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero / Landing Section -->
+    <section id="hero-section" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <span class="hero-subtitle">Món quà hoàn hảo cho ngày chung đôi</span>
+            <h1 class="hero-title">Kiến Tạo Thiệp Cưới Online<br><span class="highlight">Độc Bản & Lãng Mạn</span></h1>
+            <p class="hero-desc">
+                Tự thiết kế thiệp cưới kỹ thuật số chất lượng cao chỉ trong 5 phút. 
+                Gửi thiệp mời thông minh tích hợp nhạc nền, bản đồ chỉ đường và quản lý phản hồi (RSVP) hiện đại.
+            </p>
+            <div class="hero-buttons">
+                <a href="#designer-section" class="btn btn-primary btn-lg shine-effect">Bắt đầu thiết kế <i class="fas fa-arrow-right"></i></a>
+                <a href="#features-section" class="btn btn-secondary btn-lg">Tìm hiểu thêm</a>
+            </div>
+        </div>
+        <div class="hero-bottom-curve">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,42.7C1120,32,1280,32,1360,32L1440,32L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="var(--bg-main)"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Core App Section (Editor + Live Preview) -->
+    <section id="designer-section" class="designer-section">
+        <div class="container section-title-wrap">
+            <h2 class="section-title">Trình Thiết Kế Thiệp Cưới</h2>
+            <p class="section-subtitle">Chỉnh sửa nội dung, lựa chọn phong cách và xem trước trực quan thiệp cưới của bạn.</p>
+        </div>
+
+        <div class="container designer-container">
+            <!-- Left Sidebar: Controls & Customization -->
+            <aside class="editor-sidebar glass-panel">
+                <!-- Sidebar Tabs Navigation -->
+                <div class="sidebar-tabs">
+                    <button class="tab-btn active" data-tab="themes-tab" title="Chủ đề"><i class="fas fa-palette"></i> Chủ đề</button>
+                    <button class="tab-btn" data-tab="info-tab" title="Thông tin"><i class="fas fa-edit"></i> Nội dung</button>
+                    <button class="tab-btn" data-tab="style-tab" title="Tùy chỉnh"><i class="fas fa-font"></i> Kiểu chữ</button>
+                    <button class="tab-btn" data-tab="music-tab" title="Âm nhạc"><i class="fas fa-music"></i> Âm nhạc</button>
+                    <button class="tab-btn" data-tab="export-tab" title="Xuất thiệp"><i class="fas fa-download"></i> Xuất bản</button>
+                </div>
+
+                <!-- Tab Contents -->
+                <div class="tab-content-container">
+                    
+                    <!-- TAB 1: THEMES -->
+                    <div id="themes-tab" class="tab-pane active">
+                        <h3>Chọn Chủ Đề Thiết Kế</h3>
+                        <p class="tab-desc">Mỗi chủ đề mang một phong cách riêng biệt, lãng mạn và đầy sức sống.</p>
+                        
+                        <div class="theme-grid">
+                            <div class="theme-card-option active" data-theme="theme-floral">
+                                <div class="theme-preview-color floral-color"></div>
+                                <div class="theme-card-info">
+                                    <span class="theme-name">Floral & Pastel</span>
+                                    <span class="theme-tag romantic">Lãng mạn, Màu nước</span>
+                                </div>
+                            </div>
+                            
+                            <div class="theme-card-option" data-theme="theme-classic">
+                                <div class="theme-preview-color classic-color"></div>
+                                <div class="theme-card-info">
+                                    <span class="theme-name">Classic & Gold</span>
+                                    <span class="theme-tag luxury">Quý phái, Sang trọng</span>
+                                </div>
+                            </div>
+
+                            <div class="theme-card-option" data-theme="theme-modern">
+                                <div class="theme-preview-color modern-color"></div>
+                                <div class="theme-card-info">
+                                    <span class="theme-name">Modern Minimalist</span>
+                                    <span class="theme-tag minimalist">Tối giản, Hiện đại</span>
+                                </div>
+                            </div>
+
+                            <div class="theme-card-option" data-theme="theme-traditional">
+                                <div class="theme-preview-color traditional-color"></div>
+                                <div class="theme-card-info">
+                                    <span class="theme-name">Traditional Red</span>
+                                    <span class="theme-tag traditional">Á Đông, May mắn</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: WEDDING INFORMATION -->
+                    <div id="info-tab" class="tab-pane">
+                        <h3>Thông Tin Đám Cưới</h3>
+                        <p class="tab-desc">Nhập chi tiết về lễ cưới của bạn. Các thông tin sẽ tự động đồng bộ trên thiệp.</p>
+                        
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="input-groom-name">Tên Chú Rể</label>
+                                <input type="text" id="input-groom-name" value="Nguyễn Anh Quân" placeholder="Ví dụ: Anh Quân">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-bride-name">Tên Cô Dâu</label>
+                                <input type="text" id="input-bride-name" value="Phan Minh Thư" placeholder="Ví dụ: Minh Thư">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Họ Tên Phụ Huynh (Đại diện gia đình)</label>
+                            <div class="form-grid-2x2">
+                                <div class="form-subgroup">
+                                    <small>Nhà Trai (Cha)</small>
+                                    <input type="text" id="input-groom-father" value="Nguyễn Văn Hùng">
+                                </div>
+                                <div class="form-subgroup">
+                                    <small>Nhà Trai (Mẹ)</small>
+                                    <input type="text" id="input-groom-mother" value="Lê Thị Mai">
+                                </div>
+                                <div class="form-subgroup">
+                                    <small>Nhà Gái (Cha)</small>
+                                    <input type="text" id="input-bride-father" value="Phan Thanh Hải">
+                                </div>
+                                <div class="form-subgroup">
+                                    <small>Nhà Gái (Mẹ)</small>
+                                    <input type="text" id="input-bride-mother" value="Trần Thị Lan">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="input-date">Ngày Tổ Chức</label>
+                                <input type="date" id="input-date" value="2026-10-18">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-time">Giờ Tổ Chức</label>
+                                <input type="time" id="input-time" value="11:00">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-location">Địa Điểm Tổ Chức Tiệc</label>
+                            <input type="text" id="input-location" value="Khách Sạn Palace, 120 Nguyễn Huệ, Quận 1, TP. HCM" placeholder="Nhập địa chỉ nhà hàng/khách sạn">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-quote">Lời Trích Dẫn Lãng Mạn</label>
+                            <textarea id="input-quote" rows="2" placeholder="Ví dụ: Tình yêu không chỉ là nhìn nhau, mà là cùng nhìn về một hướng...">"Tình yêu không chỉ là một danh từ - đó là một động từ, là sự sẻ chia, quan tâm và gắn kết suốt cuộc đời."</textarea>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: TYPOGRAPHY AND STYLES -->
+                    <div id="style-tab" class="tab-pane">
+                        <h3>Tùy Chọn Kiểu Chữ & Ảnh</h3>
+                        <p class="tab-desc">Lựa chọn phông chữ nghệ thuật và tải lên bức ảnh cưới ngọt ngào nhất của các bạn.</p>
+
+                        <div class="form-group">
+                            <label for="select-font-title">Phông Chữ Tên (Calligraphy)</label>
+                            <select id="select-font-title" class="custom-select">
+                                <option value="font-greatvibes" selected>Great Vibes (Quyến rũ)</option>
+                                <option value="font-alexbrush">Alex Brush (Tinh tế)</option>
+                                <option value="font-dancing">Dancing Script (Trẻ trung)</option>
+                                <option value="font-charm">Charm (Cổ điển)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="select-font-body">Phông Chữ Nội Dung</label>
+                            <select id="select-font-body" class="custom-select">
+                                <option value="font-montserrat" selected>Montserrat (Hiện đại)</option>
+                                <option value="font-quicksand">Quicksand (Mềm mại)</option>
+                                <option value="font-playfair">Playfair Display (Sang trọng)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upload-couple-img">Hình Ảnh Cặp Đôi (Photo)</label>
+                            <div class="image-upload-wrapper">
+                                <label for="upload-couple-img" class="upload-btn">
+                                    <i class="fas fa-cloud-upload-alt"></i> Tải ảnh lên
+                                </label>
+                                <input type="file" id="upload-couple-img" accept="image/*" style="display: none;">
+                                <span id="file-name-indicator" class="file-name-indicator">couple_default.png</span>
+                            </div>
+                            <small class="help-text">Nên chọn ảnh chụp dọc để hiển thị đẹp nhất.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Họa Tiết Trang Trí Bổ Trợ</label>
+                            <div class="decoration-toggles">
+                                <button class="decor-toggle-btn active" data-decor="decor-rings"><i class="fas fa-ring"></i> Nhẫn cưới</button>
+                                <button class="decor-toggle-btn active" data-decor="decor-hearts"><i class="fas fa-heart"></i> Trái tim</button>
+                                <button class="decor-toggle-btn" data-decor="decor-sparkles"><i class="fas fa-sparkles"></i> Lấp lánh</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4: AUDIO / BACKGROUND MUSIC -->
+                    <div id="music-tab" class="tab-pane">
+                        <h3>Nhạc Nền Thiệp Cưới</h3>
+                        <p class="tab-desc">Nhạc nền sẽ tự động phát khi khách mời mở thiệp cưới trực tuyến.</p>
+
+                        <div class="music-track-list">
+                            <div class="track-item active" data-track-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+                                <div class="track-icon"><i class="fas fa-play"></i></div>
+                                <div class="track-details">
+                                    <span class="track-title">Beautiful Dream (Piano & String)</span>
+                                    <span class="track-author">Romantic Instrumental</span>
+                                </div>
+                            </div>
+                            
+                            <div class="track-item" data-track-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+                                <div class="track-icon"><i class="fas fa-play"></i></div>
+                                <div class="track-details">
+                                    <span class="track-title">Acoustic Love Ballad (Guitar)</span>
+                                    <span class="track-author">Sweet Acoustic Solo</span>
+                                </div>
+                            </div>
+
+                            <div class="track-item" data-track-url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">
+                                <div class="track-icon"><i class="fas fa-play"></i></div>
+                                <div class="track-details">
+                                    <span class="track-title">Eternal Vows (Orchestra Piano)</span>
+                                    <span class="track-author">Elegant Cinematic</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="audio-control-panel">
+                            <button id="sidebar-play-btn" class="btn btn-secondary btn-block"><i class="fas fa-play"></i> Nghe thử Nhạc nền</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 5: EXPORT AND SHARE -->
+                    <div id="export-tab" class="tab-pane">
+                        <h3>Xuất Bản & Chia Sẻ Thiệp</h3>
+                        <p class="tab-desc">Chúc mừng! Bạn đã hoàn thành thiết kế. Hãy lựa chọn phương án lưu trữ và gửi thiệp dưới đây.</p>
+
+                        <div class="export-actions">
+                            <button id="download-card-btn" class="btn btn-primary btn-block shine-effect">
+                                <i class="fas fa-file-download"></i> Tải Ảnh Thiệp (PNG)
+                            </button>
+                            
+                            <button id="get-share-link-btn" class="btn btn-outline btn-block">
+                                <i class="fas fa-share-alt"></i> Sao chép Link thiệp Online
+                            </button>
+                        </div>
+
+                        <div class="divider"><span>Hoặc kiểm tra RSVP</span></div>
+
+                        <div class="rsvp-quick-view">
+                            <p>Thiệp mời của bạn đang tích hợp hệ thống xác nhận tham dự tự động.</p>
+                            <button id="simulate-rsvp-btn" class="btn btn-secondary btn-block">
+                                <i class="fas fa-paper-plane"></i> Thử gửi phản hồi (Khách mời RSVP)
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- Right Area: Live Invitation Preview Canvas -->
+            <main class="preview-area">
+                <!-- Preview Control Options (Mobile vs Desktop) -->
+                <div class="preview-controls">
+                    <div class="view-toggles">
+                        <button class="view-toggle-btn active" data-view="mobile"><i class="fas fa-mobile-alt"></i> Điện thoại</button>
+                        <button class="view-toggle-btn" data-view="desktop"><i class="fas fa-desktop"></i> Máy tính</button>
+                    </div>
+                    
+                    <div class="flip-tip">
+                        <span><i class="fas fa-undo"></i> Click để lật thiệp xem nội dung</span>
+                    </div>
+                </div>
+
+                <!-- Invitation Frame Container -->
+                <div class="invitation-view-wrapper view-mobile">
+                    <!-- The Card Container (3D Flip Effect) -->
+                    <div class="card-container" id="invitation-card">
+                        
+                        <!-- CARD FRONT: THE COVER (BÌA THIỆP) -->
+                        <div class="card-side card-front">
+                            <div class="theme-overlay"></div>
+                            <div class="card-content-inner">
+                                <div class="decor-corner top-left"></div>
+                                <div class="decor-corner top-right"></div>
+                                
+                                <div class="cover-header">
+                                    <span class="save-the-date">SAVE THE DATE</span>
+                                    <div class="cover-divider"></div>
+                                    <p class="cover-intro">Trân trọng kính mời quý khách tới dự</p>
+                                </div>
+
+                                <div class="cover-title">Lễ Thành Hôn</div>
+                                
+                                <div class="cover-names font-greatvibes">
+                                    <span id="card-front-groom">Anh Quân</span>
+                                    <div class="cover-heart-wrap">
+                                        <i class="fas fa-heart cover-heart-icon"></i>
+                                    </div>
+                                    <span id="card-front-bride">Minh Thư</span>
+                                </div>
+                                
+                                <div class="cover-footer">
+                                    <div class="date-badge" id="card-front-date">
+                                        <span class="day">18</span>
+                                        <span class="month-year">THÁNG 10 2026</span>
+                                    </div>
+                                    <button class="btn btn-open-card" id="btn-open-card-action">Mở Thiệp <i class="fas fa-envelope-open"></i></button>
+                                </div>
+
+                                <div class="decor-corner bottom-left"></div>
+                                <div class="decor-corner bottom-right"></div>
+                            </div>
+                        </div>
+
+                        <!-- CARD BACK: THE CONTENT (RUỘT THIỆP) -->
+                        <div class="card-side card-back">
+                            <div class="theme-overlay"></div>
+                            <div class="card-content-inner font-montserrat">
+                                <div class="decor-corner top-left"></div>
+                                <div class="decor-corner top-right"></div>
+
+                                <div class="back-scroll-container">
+                                    <!-- Parent Names -->
+                                    <div class="card-parents">
+                                        <div class="parents-group">
+                                            <strong>Nhà Trai</strong>
+                                            <p id="card-parent-groom-father">Nguyễn Văn Hùng</p>
+                                            <p id="card-parent-groom-mother">Lê Thị Mai</p>
+                                        </div>
+                                        <div class="parents-group">
+                                            <strong>Nhà Gái</strong>
+                                            <p id="card-parent-bride-father">Phan Thanh Hải</p>
+                                            <p id="card-parent-bride-mother">Trần Thị Lan</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-wedding-intro">
+                                        <p>Trân trọng kính mời quý khách đến chung vui cùng gia đình chúng tôi tại buổi tiệc thành hôn của hai con</p>
+                                    </div>
+
+                                    <!-- Couple Portrait Image -->
+                                    <div class="card-couple-portrait-wrap">
+                                        <div class="portrait-frame">
+                                            <img id="card-couple-img" src="assets/couple_default.png" alt="Couple portrait">
+                                        </div>
+                                    </div>
+
+                                    <!-- Groom & Bride Names Detail -->
+                                    <div class="card-couple-names font-greatvibes">
+                                        <span id="card-back-groom">Nguyễn Anh Quân</span>
+                                        <span class="ampersand">&</span>
+                                        <span id="card-back-bride">Phan Minh Thư</span>
+                                    </div>
+
+                                    <!-- Marriage Quote -->
+                                    <blockquote class="card-quote" id="card-back-quote">
+                                        "Tình yêu không chỉ là một danh từ - đó là một động từ, là sự sẻ chia, quan tâm và gắn kết suốt cuộc đời."
+                                    </blockquote>
+
+                                    <!-- Wedding Schedule Details -->
+                                    <div class="card-schedule-panel">
+                                        <div class="schedule-decor">
+                                            <i class="fas fa-rings-wedding id-decor-rings"></i>
+                                            <i class="fas fa-heart id-decor-hearts"></i>
+                                            <i class="fas fa-sparkles id-decor-sparkles hidden"></i>
+                                        </div>
+                                        
+                                        <div class="schedule-item">
+                                            <h4>LỄ THÀNH HÔN</h4>
+                                            <p class="time" id="card-back-time">11:00</p>
+                                            <p class="date" id="card-back-date">Chủ Nhật, 18 Tháng 10, 2026</p>
+                                        </div>
+                                        
+                                        <div class="schedule-item">
+                                            <h4>ĐỊA ĐIỂM TIỆC CƯỚI</h4>
+                                            <p class="location" id="card-back-location">Khách Sạn Palace, 120 Nguyễn Huệ, Quận 1, TP. HCM</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- RSVP & Action Button inside card -->
+                                    <div class="card-actions-wrap">
+                                        <button class="btn btn-rsvp" id="card-rsvp-trigger-btn">
+                                            <i class="fas fa-calendar-check"></i> Xác nhận tham dự (RSVP)
+                                        </button>
+                                        <a href="https://maps.google.com" target="_blank" class="btn btn-map-link" id="card-map-btn">
+                                            <i class="fas fa-map-marker-alt"></i> Xem Bản Đồ Chỉ Đường
+                                        </a>
+                                    </div>
+                                    
+                                    <button class="btn btn-close-card" id="btn-close-card-action"><i class="fas fa-arrow-left"></i> Quay lại Bìa thiệp</button>
+                                </div>
+
+                                <div class="decor-corner bottom-left"></div>
+                                <div class="decor-corner bottom-right"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- App Features Overview -->
+    <section id="features-section" class="features-section">
+        <div class="container">
+            <div class="section-title-wrap text-center">
+                <span class="section-badge">Dịch vụ ưu việt</span>
+                <h2 class="section-title">Tại sao chọn E-Wedding?</h2>
+                <p class="section-subtitle">Chúng tôi cung cấp giải pháp thiệp cưới hiện đại, tối ưu hóa trải nghiệm khách mời.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                    <h3>Thiết Kế Tức Thời</h3>
+                    <p>Chỉnh sửa văn bản, màu sắc, font chữ và hình ảnh nhanh chóng trong nháy mắt với chế độ xem thử trực quan.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-volume-up"></i></div>
+                    <h3>Nhạc Nền Tự Động</h3>
+                    <p>Tích hợp các bản nhạc không lời lãng mạn, tăng thêm cảm xúc hạnh phúc khi khách mời đọc thiệp.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h3>Quản Lý RSVP Thông Minh</h3>
+                    <p>Khách mời xác nhận số lượng người đi cùng và gửi lời chúc tốt đẹp trực tiếp thông qua thiệp mời online.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Tương Thích Mọi Thiết Bị</h3>
+                    <p>Thiệp mời tự động co giãn vừa vặn, hiển thị sắc nét trên cả điện thoại, máy tính bảng và màn hình máy tính.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-brand">
+                <i class="fas fa-heart-pulse footer-logo-icon"></i>
+                <h3>E-Wedding</h3>
+                <p>Nền tảng thiệp cưới điện tử cao cấp, đồng hành cùng hạnh phúc trăm năm của bạn.</p>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="copyright">&copy; 2026 E-Wedding. Thiết kế và phát triển bởi Antigravity với tất cả tình yêu.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: RSVP FORM SIMULATOR (Khách gửi phản hồi) -->
+    <div id="rsvp-modal" class="modal-backdrop">
+        <div class="modal-content glass-panel animated zoomIn">
+            <button class="modal-close-btn" id="close-rsvp-modal-btn">&times;</button>
+            <div class="modal-header">
+                <i class="fas fa-envelope-open-text modal-header-icon"></i>
+                <h2>Xác Nhận Tham Dự Lễ Cưới</h2>
+                <p>Vui lòng gửi phản hồi của bạn để chúng tôi chuẩn bị đón tiếp chu đáo nhất.</p>
+            </div>
+            <form id="rsvp-simulator-form">
+                <div class="form-group">
+                    <label for="rsvp-guest-name">Họ và Tên của Bạn</label>
+                    <input type="text" id="rsvp-guest-name" required placeholder="Nhập tên của bạn...">
+                </div>
+
+                <div class="form-group">
+                    <label>Trạng Thái Tham Dự</label>
+                    <div class="rsvp-radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="rsvp-status" value="attending" checked>
+                            <span class="radio-custom-box"><i class="fas fa-check"></i> Attending</span>
+                            <span>Sẽ Tham Dự</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="rsvp-status" value="absent">
+                            <span class="radio-custom-box"><i class="fas fa-times"></i> Absent</span>
+                            <span>Rất tiếc không thể đến</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="rsvp-count-wrapper">
+                    <label for="rsvp-guest-count">Số lượng người tham dự (bao gồm cả bạn)</label>
+                    <select id="rsvp-guest-count" class="custom-select">
+                        <option value="1">1 người</option>
+                        <option value="2">2 người</option>
+                        <option value="3">3 người</option>
+                        <option value="4">4 người</option>
+                        <option value="5">Nhiều hơn 5 người</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rsvp-wishes">Lời chúc gửi tới Cô Dâu & Chú Rể</label>
+                    <textarea id="rsvp-wishes" rows="3" placeholder="Gửi những lời chúc mừng trăm năm hạnh phúc tới cặp đôi..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block shine-effect">Gửi Phản Hồi Cho Cặp Đôi</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: RSVP ADMIN DASHBOARD (Xem danh sách phản hồi) -->
+    <div id="dashboard-modal" class="modal-backdrop">
+        <div class="modal-content glass-panel dashboard-modal-content animated zoomIn">
+            <button class="modal-close-btn" id="close-dashboard-modal-btn">&times;</button>
+            <div class="modal-header">
+                <i class="fas fa-chart-line modal-header-icon"></i>
+                <h2>Bảng Quản Lý Phản Hồi RSVP</h2>
+                <p>Xem thống kê khách dự tiệc và danh sách lời chúc được gửi tới thiệp cưới.</p>
+            </div>
+            
+            <!-- RSVP Stats Summary -->
+            <div class="dashboard-stats-row">
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-total-attending">0</span>
+                    <span class="stat-label">Sẽ Tham Dự (Khách)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-total-absent">0</span>
+                    <span class="stat-label">Không Tham Dự</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-total-responses">0</span>
+                    <span class="stat-label">Tổng Lượt Phản Hồi</span>
+                </div>
+            </div>
+
+            <!-- RSVP Table / List -->
+            <div class="rsvp-table-container">
+                <table class="rsvp-table">
+                    <thead>
+                        <tr>
+                            <th>Khách mời</th>
+                            <th>Trạng thái</th>
+                            <th>Số người đi cùng</th>
+                            <th>Lời chúc</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rsvp-list-body">
+                        <!-- RSVP entries will be dynamically loaded here -->
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 30px;">
+                                Chưa có phản hồi nào được gửi. Hãy thử click nút "Thử gửi phản hồi" ở tab Xuất Bản!
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="dashboard-actions">
+                <button id="clear-rsvp-data-btn" class="btn btn-outline"><i class="fas fa-trash-alt"></i> Xóa tất cả dữ liệu mẫu</button>
+                <button id="close-dashboard-modal-action-btn" class="btn btn-secondary">Đóng Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Script Entry Point -->
+    <script src="app.js"></script>
+</body>
+</html>
